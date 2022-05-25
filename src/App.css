@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+.App-1 {
+  background-color: #282c34;
+  
+}
+
+.background-image {
+  background-image: url("https://www.pngkey.com/png/full/95-950673_brazil-vector-banner-black-and-white-stock-background.png");
+  padding: 0px 0 0px 0;
+  height: 100%;
+  background-size: 500%;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+
+.news-background {
+  background-color: #FFFFFF; /* Used if the image is unavailable */
+  background-position: center; /* Center the image */
+  background-size: 500%;
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding: 15px;
+}
+
+
+.menu-footer {
+  position: absolute, bottom;
+  top: 15;
+  bottom: 0;
+  width: 100%;
+  background-color: #004A2F;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.alinhamento-news {
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.pagination-line {
+  border-radius: 5px;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+}
+
+.pagination li + li {
+  margin-left: 1rem;
+}
+.pagination__item--active {
+  background: none;
+  font-weight: bold;
+  border: none;
+}
+.pagination__item--active:focus {
+  outline: none;
+}

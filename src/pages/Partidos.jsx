@@ -3,8 +3,8 @@ import { ListGroup, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import apiDeputados from '../services/apiDeputados'
 import { BsFillPeopleFill } from "react-icons/bs";
-import { GiMagnifyingGlass } from "react-icons/gi";
 import { Col } from 'antd';
+import { Avatar } from '@mui/material';
 
 const Partidos = () => {
 
@@ -16,24 +16,24 @@ const Partidos = () => {
       setPartidos(resultado.data.dados)
       console.log(resultado.data.dados)
     })
+
   }, [])
 
   return (
     <div>
 
-      <h1 ><strong className="text-success">Partidos</strong></h1>
+      
 
       <Row>
-        <Col md={2}>
+        <Col class="col-md-6">
+        <h1 ><strong className="text-success">Partidos</strong></h1>
           {partidos.map(item => (
             <ListGroup variant="flush">
-              <ListGroup.Item variant="warning"><strong className="text-success"><BsFillPeopleFill />{'   '}
+              <ListGroup.Item variant="warning"><strong className="text-success"><Avatar alt="Remy Sharp" src="https://labpixel.com.br/digitalpixel/wp-content/uploads/2016/03/logo-prb.png"/>
                 {item.sigla} </strong> - {item.nome}</ListGroup.Item>
             </ListGroup>
           ))}
         </Col>
-        <Col md={2}></Col>
-        <Col md={2}></Col>
       </Row>
       <br></br>
       <Link className='btn btn-danger' to={-1}>Voltar</Link>

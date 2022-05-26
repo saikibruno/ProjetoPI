@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import {Form, Row, Col, Button } from 'react-bootstrap'
+import { BsChatText } from "react-icons/bs";
 
 
 
@@ -22,7 +23,7 @@ const Cadastro = () => {
     <div>
 
     <br></br>
-    <h1 className="text-success"><strong>Fale Conosco</strong></h1>
+    <h1 className="text-success"><strong><BsChatText/>  Fale Conosco</strong></h1>
     <br></br>
 
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -683,6 +684,13 @@ const Cadastro = () => {
     </Form.Group>
 
   </Row>
+
+  <Form>
+	<Form.Group as={Col} md="10" controlId="exampleForm.ControlTextarea1">
+		<Form.Label>Sua mensagem:</Form.Label>
+		<Form.Control as="textarea" rows={3} />
+	</Form.Group>
+	</Form>
 
   <Form.Group >
         <Form.Check

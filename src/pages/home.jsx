@@ -3,7 +3,6 @@ import {
   Col,
   Carousel,
   Row,
-  Accordion,
   ListGroup,
   Button,
 } from "react-bootstrap";
@@ -149,3 +148,4 @@ const Home = () => {
 };
 
 export default Home;
+

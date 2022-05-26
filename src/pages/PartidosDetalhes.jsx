@@ -4,17 +4,17 @@ import { Badge, Card, Col, Figure, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import apiDeputados from '../services/apiDeputados';
 
-const AgendaDetalhes = () => {
+const PartidoDetalhes = () => {
     const params = useParams();
 
-    const [agenda, setAgenda] = useState({});
+    const [partido, setPartido] = useState({});
     const [participantes, setParticipantes] = useState([]);
     const [organizador, setOrganizador] = useState([]);
 
 
     useEffect(() => {
         apiDeputados.get('eventos/' + params.id).then(resultado => {
-            setAgenda(resultado.data.dados);
+            setPartido(resultado.data.dados);
             console.log(resultado.data.dados)
         })
 
@@ -32,32 +32,32 @@ const AgendaDetalhes = () => {
 
     return (
         <div>
-            {agenda.id &&
+            {partido.id &&
                 <>
                     <br></br>
                     <Figure.Image
                         width={151}
                         height={160}
                         alt="271x280"
-                        src="https://www12.senado.leg.br/radio/1/primeiro-item/2021/06/14/agenda-da-camara-dos-deputados/@@images/a5b20c2d-8cc6-4d90-a135-fc498d0297f5.jpeg"
+                        src="https://www12.senado.leg.br/radio/1/primeiro-item/2021/06/14/partido-da-camara-dos-deputados/@@images/a5b20c2d-8cc6-4d90-a135-fc498d0297f5.jpeg"
                     />
-                    <h1 className="text-success"><strong>{agenda.descricaoTipo}</strong></h1>
-                    <Badge bg="danger" text="Light">{agenda.situacao}</Badge>
+                    <h1 className="text-success"><strong>{partido.descricaoTipo}</strong></h1>
+                    <Badge bg="danger" text="Light">{partido.situacao}</Badge>
                     <br></br>
                     <br></br>
                     <Card border="success">
                         <Card.Body>
                             <Card.Text>
                                 <strong className="text-success">Data e Horário: </strong>
-                                {agenda.dataHoraInicio}
+                                {partido.dataHoraInicio}
                             </Card.Text>
                             <Card.Text>
                                 <strong className="text-success">Local: </strong>
-                                {agenda.localExterno} {agenda.localCamara [agenda.localCamara.name] }
+                                {partido.localExterno} {partido.localCamara [partido.localCamara.name] }
                             </Card.Text>
                             <Card.Text>
                                 <strong className="text-success">Descrição: </strong>
-                                {agenda.descricao}
+                                {partido.descricao}
                             </Card.Text>
                             {organizador.map(item => (
                                 <Card.Text>
@@ -93,5 +93,4 @@ const AgendaDetalhes = () => {
     )
 }
 
-export default AgendaDetalhes
-
+export default PartidoDetalhes

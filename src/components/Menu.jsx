@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Figure, Nav, Navbar, Row } from "react-bootstrap";
+import { Container, Figure, Nav, Navbar} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsInstagram, BsFacebook, BsTwitter, BsTelegram } from "react-icons/bs";
@@ -22,7 +22,7 @@ const Menu = () => {
         <Container>
           <Figure.Image
             width={141}
-            margin={15}
+            margin={10}
             height={180}
             alt="291x300"
             src="https://www.camara.leg.br/midias/image/2022/03/marca-camara-preferencial-cores.png"

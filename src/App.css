@@ -98,3 +98,10 @@
 .pagination__item--active:focus {
   outline: none;
 }
+
+.limitador_de_texto {
+  max-height: 10px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}

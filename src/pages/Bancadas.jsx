@@ -1,64 +1,61 @@
-import React, { useEffect, useState } from 'react'
-import { ListGroup } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import { useEffect, useState } from 'react';
+import { BsCalendar3 } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 import apiDeputados from '../services/apiDeputados'
-
-const LIMIT = 18;
-const MAX_ITEMS = 5;
-const MAX_LEFT = (MAX_ITEMS - 1) / 2;
+import { Col, Row } from 'react-bootstrap'
 
 const Bancadas = () => {
-    const [frentes, setFrentes] = useState([])
-    const [offset, setOffset] = useState([1])
 
-    useEffect(() => {
-        apiDeputados
-            .get(
-                "frentes?pagina=" +
-                atual +
-                "&itens=" +
-                LIMIT +
-                "&ordem=ASC&ordenarPor=nome"
-            )
-            .then((resultado) => {
-                setFrentes(resultado.data.dados);
-                console.log(offset);
-            });
-    }, [offset]);
+  const [agenda, setAgenda] = useState([])
 
-    const atual = offset;
-    const pages = 43;
-    const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1);
-    const first = Math.min(Math.max(atual - MAX_LEFT, 1), maxFirst);
+  useEffect(() => {
+
+    apiDeputados.get('eventos').then(resultado => {
+      setAgenda(resultado.data.dados)
+      console.log(resultado.data.dados)
+
+    })
+  }, [])
 
   return (
     <div>
+      <br></br>
+      <h1 className="text-success"><strong><BsCalendar3 />  Bancadas</strong></h1>
+      <br></br>
 
-      <h1 ><strong className="text-success">Frentes</strong></h1>
-
-      {frentes.map(item => (
-        <ListGroup variant="flush">
-          <ListGroup.Item variant="warning"><strong className="text-success">{item.titulo}</strong></ListGroup.Item>
-        </ListGroup>
-      ))}
-                      <ul className="pagination">
-                    {Array.from({ length: Math.min(MAX_ITEMS, pages) })
-                        .map((_, index) => index + first)
-                        .map((page) => (
-                            <li key={page}>
-                                <button 
-                                    onClick={() => setOffset(page)}
-                                    className={page === atual ? "pagination__item--active" : null}
-                                >
-                                    {page}
-                                </button>
-                            </li>
-                        ))}
-                </ul>
-                <br></br>
-                <Link className='btn btn-danger' to={-1}>Voltar</Link>
-                <br></br>
-                <br></br>
+      <Row>
+        {agenda.map(item => (
+          <Col key={item.id} md={4} className="mb-3">
+          <Card sx={{ maxWidth:
+           345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image="https://www12.senado.leg.br/radio/1/primeiro-item/2021/06/14/agenda-da-camara-dos-deputados/@@images/a5b20c2d-8cc6-4d90-a135-fc498d0297f5.jpeg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+              {item.descricaoTipo}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over 6,000
+                species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+          </Col>
+        ))}
+      </Row>
+      <br></br>
+      <Link className='btn btn-danger' to={-1}>Voltar</Link>
+      <br></br>
+      <br></br>
     </div>
   )
 }

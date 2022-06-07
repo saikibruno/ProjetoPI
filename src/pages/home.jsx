@@ -7,14 +7,14 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { BsNewspaper, BsArrowLeft } from "react-icons/bs";
+import { BsNewspaper } from "react-icons/bs";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 import "../App.css";
 
 const Home = () => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPerPage] = useState(5);
+  const [totalPerPage] = useState(6);
   const [copyy, setCopyy] = useState([]);
 
   let end = page * totalPerPage;
@@ -53,7 +53,7 @@ const Home = () => {
       cop: el?.innerHTML,
     }));
     setCopyy(copyright[0].innerHTML);
-    
+
     const feedItems = [...items].map((el) => ({
       link: el.querySelector("link")?.innerHTML,
       title: el.querySelector("title")?.innerHTML,
@@ -65,58 +65,61 @@ const Home = () => {
 
   return (
     <div class="news-background">
+                          <br></br>
       <h1 className="text-success">
         <strong>
           <BsNewspaper /> Notícias
         </strong>
       </h1>
+      <br></br>
       <div>
         <Row>
           <>
             <Col class="col-md-6">
               <Carousel>
                 {items.map((item, index) => (
-                  <Carousel.Item key={index}>                    
+                  <Carousel.Item key={index}>
                     <a target={"_blank"} href={item.link}>
-                    <img
-                      className="d-block w-100"
-                      src={
-                        "https://i.ytimg.com/vi/IG421eoSlEE/maxresdefault.jpg"
-                      }
-                      href={item.link}
-                      alt="First slide"
-                    />
+                      <img
+                        className="d-block w-100"
+                        src={
+                          "https://i.ytimg.com/vi/IG421eoSlEE/maxresdefault.jpg"
+                        }
+                        href={item.link}
+                        alt="First slide"
+                      />
                     </a>
                     <Carousel.Caption>
-                             
-                    </Carousel.Caption>  
-                    <h5>
-                        <strong>
-                          <a
-                            target={"_blank"}
-                            href={item.link}
-                            className="text-dark"
-                            style={{ textDecoration: 'none' }}
-                          >
-                            {item.title}
-                          </a>                          
-                        </strong>
-                      </h5>            
-                      {copyy}                    
+
+                    </Carousel.Caption>
+                    <h2>
+                      <strong>
+                        <a
+                          target={"_blank"}
+                          href={item.link}
+                          className="text-dark"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          {item.title}
+                        </a>
+                      </strong>
+                    </h2>
+                    {copyy}
                   </Carousel.Item>
-                  
+
                 ))}
-                
+
               </Carousel>
             </Col>
           </>
           <>
             <Col class="col-md-6">
-              <h5 className="text-danger">
+              <h4 className="text-danger">
                 <strong>
                   <BsNewspaper /> Últimas Notícias
                 </strong>
-              </h5>
+              </h4>
+              <br></br>
               <Button className="btn btn-success" onClick={prevPage}>
                 <BiSkipPrevious />
               </Button>{" "}
@@ -124,15 +127,21 @@ const Home = () => {
               <Button className="btn btn-success" onClick={nextPage}>
                 <BiSkipNext />
               </Button>
+              <br></br>
+              <br></br>
+              <div>
               {paginado.map((item, index) => (
-                <ListGroup key={index} class="alinhamento-news" variant="flush">
-                  <ListGroup.Item as="li">
-                    <a target={"_blank"} href={item.link} style={{ textDecoration: 'none' }}>
-                      {item.title}
-                    </a>
+                <ListGroup key={index} variant="flush">
+                  <ListGroup.Item as="li" className="alinhamento-news">
+                    <h5 >
+                      <a target={"_blank"} href={item.link} style={{ textDecoration: 'black' , color: 'black'}}>
+                        {item.title}
+                      </a>
+                    </h5>
                   </ListGroup.Item>
                 </ListGroup>
               ))}
+              </div>
             </Col>
           </>
         </Row>

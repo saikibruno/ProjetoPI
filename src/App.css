@@ -48,18 +48,8 @@
   background-size: 500%;
   background-repeat: no-repeat;
   background-position: left;
+  background-attachment: fixed;
 }
-
-
-.news-background {
-  background-color: #FFFFFF; /* Used if the image is unavailable */
-  background-position: center; /* Center the image */
-  background-size: 500%;
-  background-repeat: repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  padding: 15px;
-}
-
 
 .menu-footer {
   position: absolute, bottom;
@@ -72,10 +62,15 @@
   padding: 10px;
 }
 
-.alinhamento-news {
-  text-align: center;
+.alinhamento-news {  
+  text-align: left;
   padding: 10px;
-  text-decoration: none;
+  opacity: 1;
+  background-color: #11ffee00;
+  
+}
+.alinhamento-news:hover {
+  opacity: 0.5;  
 }
 
 .pagination-line {

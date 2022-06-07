@@ -9,21 +9,25 @@ import FaleConosco from "./pages/FaleConosco";
 import Deputados from "./pages/Deputados";
 import Partidos from "./pages/Partidos";
 import Bancadas from "./pages/Bancadas";
+import DeputadosDetalhes from "./pages/DeputadosDetalhes";
+import PartidosDetalhes from "./pages/PartidosDetalhes";
 
 function App() {
   return (
     <div class="background-image">
       <BrowserRouter>
-        <Menu />
-        <Container>
+      <Menu />
+        <Container>        
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/agenda/:id" element={<AgendaDetalhes />} />
             <Route path="/deputados" element={<Deputados />} />
+            <Route path="/deputados/:id" element={<DeputadosDetalhes />} />
             <Route path="/faleConosco" element={<FaleConosco />} />
             <Route path="/partidos" element={<Partidos />} />
+            <Route path="/partidos/:id" element={<PartidosDetalhes />} />
             <Route path="/bancadas" element={<Bancadas />} />
           </Routes>
         </Container>
@@ -39,7 +43,7 @@ function App() {
                 CNPJ: 00.530.352/0001-59<br />
               </Col>
               <Col class="col-md-6">
-                Disque-Câmara: 0800-0-619-619, de 8h às 20h<br />
+                Disque-Câmara: 0800 061 9619, de 8h às 20h<br />
                 Atendimento presencial: de 9h às 19h
               </Col>
             </Row>

@@ -1,8 +1,9 @@
-import { Button, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import apiDeputados from '../services/apiDeputados'
+import { BsPeopleFill } from "react-icons/bs";
 
 const LIMIT = 12;
 const MAX_ITEMS = 5;
@@ -37,36 +38,38 @@ const Deputados = () => {
         <>
 
             <div>
-                <h1 className="text-success"><strong>Quem são os deputados</strong></h1>
+                <br></br>
+                <h1 className="text-success"><strong><BsPeopleFill />  Quem são os deputados</strong></h1>
+                <br></br>
                 <Row>
                     {deputados.map(item => (
-                        <Col key={item.id} md={3} className="mb-4">
+                        <Col key={item.id} md={2} className="mb-4">
                             <Card sx={{
                                 maxWidth:
                                     285
                             }}>
                                 <CardMedia
                                     component="img"
-                                    height="340"
+                                    height="250"
                                     image={item.urlFoto}
                                 />
                                 <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                    {item.nome}
+                                    <Typography gutterBottom variant="h7" component="div" className="text-success">
+                                        <strong>{item.nome}</strong>
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                    {item.siglaPartido}
+                                    <Typography variant="body2" className="text-success">
+                                        <strong>{item.siglaPartido}</strong>
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small">Veja mais...</Button>
+                                    <h6><Link className='btn btn-success' to={'/deputados/' + item.id} size="small"><strong>Mais informações</strong></Link></h6>
                                 </CardActions>
                             </Card>
                         </Col>
                     ))}
                 </Row>
-
-                <ul class="pagination">
+                <br></br>
+                <ul class="pagination" color="text.success">
                     {Array.from({ length: Math.min(MAX_ITEMS, pages) })
                         .map((_, index) => index + first)
                         .map((page) => (

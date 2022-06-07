@@ -6,9 +6,10 @@ import { HiUserGroup } from "react-icons/hi";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 
 const Bancadas = () => {
+
   const [frentes, setFrentes] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPerPage] = useState(6);
+  const [totalPerPage] = useState(6);  
 
   let end = page * totalPerPage;
   let start = end - totalPerPage;
@@ -29,8 +30,8 @@ const Bancadas = () => {
   }
   useEffect(() => {
     apiDeputados.get("frentes?pagina=1").then((resultado) => {
-      setFrentes(resultado.data.dados);
-    });
+      setFrentes(resultado.data.dados);      
+    });    
   }, []);
 
   return (
@@ -50,22 +51,20 @@ const Bancadas = () => {
       </Button>
       <br></br>
       <br></br>
-      <Table striped bordered hover variant="success">
+      <Table striped bordered hover className="bg_fosco" >
         <thead>
           <tr>
-            <th>Id</th>
+            <th className="text-center">Id</th>
             <th>Titulo</th>
-            <th>Legislatura</th>
-            <th>Coordenador</th>
+            <th className="text-center">Legislatura</th>            
           </tr>
         </thead>
         <tbody>
           {paginado.map((item, index) => (
             <tr key={index}>
-              <td>{item.id}</td>
+              <td className="text-center">{item.id}</td>
               <td>{item.titulo}</td>
-              <td>{item.idLegislatura}ª</td>
-              <td>{item.nome}</td>
+              <td className="text-center">{item.idLegislatura}ª</td>              
             </tr>
           ))}
         </tbody>

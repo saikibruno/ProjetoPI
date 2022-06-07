@@ -3,6 +3,7 @@ import { Alert, Badge, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import apiDeputados from '../services/apiDeputados'
 import { BsArrowLeft, BsCalendar3 } from "react-icons/bs";
+import "../App.css";
 
 const Agenda = () => {
 
@@ -23,7 +24,7 @@ const Agenda = () => {
       <Row>
         {agenda.map(item => (
           <Col key={item.id} md={4} className="mb-3">
-            <Alert variant="success" style={{ width: '350px', height: '220px' }} >
+            <Alert className='bg_fosco' style={{ width: '350px', height: '220px' }} >
               <Badge bg="danger" text="Light">{item.situacao}</Badge>
               <br></br>
               <br></br>

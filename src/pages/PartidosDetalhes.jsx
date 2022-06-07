@@ -14,12 +14,12 @@ const PartidoDetalhes = () => {
     useEffect(() => {
         apiDeputados.get('partidos/' + params.id).then(resultado => {
             setPartido(resultado.data.dados);
-            console.log(resultado.data.dados)
+            
         })
 
         apiDeputados.get('partidos/' + params.id + '/membros').then(resultado => {
             setMembros(resultado.data.dados);
-            console.log(resultado.data.dados)
+            console.log(resultado.data.dados);
         })
 
     }, [])

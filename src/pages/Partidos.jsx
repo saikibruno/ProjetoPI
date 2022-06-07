@@ -26,7 +26,7 @@ const Partidos = () => {
       <Container>
         <Row>
           <Col sm={6}>
-            <Table striped bordered hover variant="success">
+            <Table striped bordered hover className="bg_fosco">
               <thead>
                 <tr>
                   <th>Sigla</th>
@@ -39,7 +39,7 @@ const Partidos = () => {
                   <tr key={item.id}>
                     <td><strong>{item.sigla}</strong></td>
                     <td>{item.nome}</td>
-                    <td><Link className='btn btn-success' to={'/partidos/' + item.id} size="small">Veja mais <FaSearchPlus /></Link></td>
+                    <td><Link className='btn btn-success ' to={'/partidos/' + item.id} size="small">Veja mais <FaSearchPlus /></Link></td>
                   </tr>
                 ))}
               </tbody>

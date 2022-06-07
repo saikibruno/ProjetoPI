@@ -13,8 +13,7 @@ const Bancadas = () => {
   let end = page * totalPerPage;
   let start = end - totalPerPage;
   const paginado = frentes.slice(start, end);
-  const TotalPages = Math.ceil(frentes.length / totalPerPage);
-  console.log(paginado);
+  const TotalPages = Math.ceil(frentes.length / totalPerPage);  
   function prevPage() {
     if (page <= 1) {
       return;

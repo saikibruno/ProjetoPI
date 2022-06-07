@@ -23,8 +23,7 @@ const Deputados = () => {
                 "&ordem=ASC&ordenarPor=nome"
             )
             .then((resultado) => {
-                setDeputados(resultado.data.dados);
-                console.log(offset);
+                setDeputados(resultado.data.dados);                
             });
     }, [offset]);
 
@@ -44,7 +43,7 @@ const Deputados = () => {
                 <Row>
                     {deputados.map(item => (
                         <Col key={item.id} md={2} className="mb-4">
-                            <Card sx={{
+                            <Card className='bg_fosco' sx={{
                                 maxWidth:
                                     285
                             }}>
@@ -69,7 +68,7 @@ const Deputados = () => {
                     ))}
                 </Row>
                 <br></br>
-                <ul class="pagination" color="text.success">
+                <ul className="pagination" color="text.success">
                     {Array.from({ length: Math.min(MAX_ITEMS, pages) })
                         .map((_, index) => index + first)
                         .map((page) => (

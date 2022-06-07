@@ -58,13 +58,16 @@ const PartidoDetalhes = () => {
                             <Row>
                                 {membros.map(item => (
                                     <Col md={2} className="mb-4">
+                                        <Link to={'/deputados/' + item.id} size="auto" style={{ textDecoration: 'none' }}>
                                         <Chip
                                             color="success"
                                             avatar={<Avatar src={item.urlFoto} />}
                                             label={item.nome}
                                             variant="outlined"
                                             sx={{ width: 194, height: 44 }}
+                                            style={{ cursor: 'pointer' }}
                                         />
+                                        </Link>
                                     </Col>
                                 ))}
                             </Row>

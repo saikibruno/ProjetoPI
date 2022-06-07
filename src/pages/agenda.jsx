@@ -12,8 +12,6 @@ const Agenda = () => {
 
     apiDeputados.get('eventos').then(resultado => {
       setAgenda(resultado.data.dados)
-      console.log(resultado.data.dados)
-
     })
   }, [])
 
@@ -25,7 +23,7 @@ const Agenda = () => {
       <Row>
         {agenda.map(item => (
           <Col key={item.id} md={4} className="mb-3">
-            <Alert variant="success" style={{ width: '350px', height: '220px' }}>
+            <Alert variant="success" style={{ width: '350px', height: '220px' }} >
               <Badge bg="danger" text="Light">{item.situacao}</Badge>
               <br></br>
               <br></br>

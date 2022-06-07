@@ -14,18 +14,15 @@ const AgendaDetalhes = () => {
 
     useEffect(() => {
         apiDeputados.get('eventos/' + params.id).then(resultado => {
-            setAgenda(resultado.data.dados);
-            console.log(resultado.data.dados)
+            setAgenda(resultado.data.dados);            
         })
 
         apiDeputados.get('eventos/' + params.id + '/deputados').then(resultado => {
-            setParticipantes(resultado.data.dados);
-            console.log(resultado.data.dados)
+            setParticipantes(resultado.data.dados);            
         })
 
         apiDeputados.get('eventos/' + params.id + '/orgaos').then(resultado => {
-            setOrganizador(resultado.data.dados);
-            console.log(resultado.data.dados)
+            setOrganizador(resultado.data.dados);            
         })
 
     }, [])
@@ -45,7 +42,7 @@ const AgendaDetalhes = () => {
                     <Badge bg="danger" text="Light">{agenda.situacao}</Badge>
                     <br></br>
                     <br></br>
-                    <Card border="success">
+                    <Card border="success" className='bg_fosco'>
                         <Card.Body>
                             <Card.Text>
                                 <strong className="text-success">Data e Horário: </strong>
@@ -70,14 +67,15 @@ const AgendaDetalhes = () => {
                             </Card.Text>
                             <Row>
                                 {participantes.map(item => (
-                                    <Col md={2} className="mb-4">
-                                        <Chip
+                                    <Col md={2} className="mb-4">                                        
+                                        <Link to={'/deputados/' + item.id} size="auto" style={{ textDecoration: 'none' }}><Chip
                                             color="success"
                                             avatar={<Avatar  src={item.urlFoto} />}
                                             label={item.nome}
                                             variant="outlined"
-                                            sx={{ width: 194, height: 44 }}
-                                        />
+                                            sx={{ width: 194, height: 44 }}  
+                                            style={{ cursor: 'pointer' }}                                          
+                                        /></Link>
                                     </Col>
                                 ))}
                             </Row>

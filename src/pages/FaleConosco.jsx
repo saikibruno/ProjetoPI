@@ -30,7 +30,6 @@ const Cadastro = () => {
   }, [])
 
   function salvar(dados) {
-
     if (params.id) {
       FaleConoscoService.update(params.id, dados)
     } else {

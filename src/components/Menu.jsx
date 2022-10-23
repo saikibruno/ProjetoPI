@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsInstagram, BsFacebook, BsTwitter, BsTelegram } from "react-icons/bs";
 import '../App.css';
-import { GiBrazilFlag } from "react-icons/gi";
 
 const Menu = () => {
   return (
@@ -14,10 +13,10 @@ const Menu = () => {
         <Nav.Item>
           
             <Stack direction="horizontal" gap={4}>
-              <div className=" ms-auto"> <a target={"_blank"} href="https://t.me/CamaradosDeputados"><h4><BsTelegram className="text-light " /></h4>{'    '}</a></div>
-              <div> <a target={"_blank"} href="https://www.facebook.com/camaradeputados"><h4><BsFacebook className="text-light" /></h4>{'    '}</a></div>
-              <div> <a target={"_blank"} href="https://twitter.com/camaradeputados"> <h4><BsTwitter className="text-light" /></h4>{'    '}</a></div>
-              <div> <a target={"_blank"} href="https://www.instagram.com/camaradeputado0s/"><h4><BsInstagram className="text-light" /></h4>{'    '}</a></div>
+              <div className=" ms-auto"> <a target={"_blank"} rel={"noreferrer"} href="https://t.me/CamaradosDeputados"><h4><BsTelegram className="text-light " /></h4>{'    '}</a></div>
+              <div> <a target={"_blank"} rel={"noreferrer"} href="https://www.facebook.com/camaradeputados"><h4><BsFacebook className="text-light" /></h4>{'    '}</a></div>
+              <div> <a target={"_blank"} rel={"noreferrer"} href="https://twitter.com/camaradeputados"> <h4><BsTwitter className="text-light" /></h4>{'    '}</a></div>
+              <div> <a target={"_blank"} rel={"noreferrer"} href="https://www.instagram.com/camaradeputado0s/"><h4><BsInstagram className="text-light" /></h4>{'    '}</a></div>
             </Stack>    
         </Nav.Item>
         </Container>
@@ -33,13 +32,13 @@ const Menu = () => {
           />
         </Container>
         <Container>
-          <Nav className="me-auto">
-            <Link className="nav-link" to="/deputados"><h6><strong className="text-light">Deputados   <GiBrazilFlag/></strong></h6></Link>{'    '}
-            <Link className="nav-link" to="/bancadas"><h6><strong className="text-light">Frentes Parlamentares   <GiBrazilFlag/></strong></h6></Link>{'    '}
-            <Link className="nav-link" to="/partidos"><h6><strong className="text-light">Partidos   <GiBrazilFlag/></strong></h6></Link>{'    '}
-            <Link className="nav-link" to="/agenda"><h6><strong className="text-light">Agenda   <GiBrazilFlag/></strong></h6></Link>{'    '}
-            <Link className="nav-link" to="/home"><h6><strong className="text-light">Notícias   <GiBrazilFlag/></strong></h6></Link>{'    '}
-            <Link className="nav-link" to="/faleConosco"><h6><strong className="text-light">Fale Conosco   </strong></h6></Link>{'    '}
+          <Nav >
+            <Link className="nav-link" to="/deputados"><strong className="text-light">Deputados</strong></Link>
+            <Link className="nav-link" to="/bancadas"><strong className="text-light">Frentes Parlamentares</strong></Link>
+            <Link className="nav-link" to="/partidos"><strong className="text-light">Partidos</strong></Link>
+            <Link className="nav-link" to="/agenda"><strong className="text-light">Agenda</strong></Link>
+            <Link className="nav-link" to="/home"><strong className="text-light">Notícias</strong></Link>
+            <Link className="nav-link" to="/faleConosco"><strong className="text-light">Fale Conosco</strong></Link>
           </Nav>
         </Container>
       </Navbar>

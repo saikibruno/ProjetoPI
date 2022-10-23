@@ -4,17 +4,20 @@ import { Link, useParams } from 'react-router-dom'
 import apiDeputados from '../services/apiDeputados'
 import { BsPeopleFill } from "react-icons/bs";
 import { FaSearchPlus } from "react-icons/fa";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Partidos = () => {
 
   const params = useParams()
+  const [isLoading, setIsLoading] = useState(true);
   const [partidos, setPartidos] = useState([])
   useEffect(() => {
 
     apiDeputados.get('partidos/').then(resultado => {
       setPartidos(resultado.data.dados);
-      console.log(resultado.data.dados)
+      setIsLoading(false);
     })
+
 
   }, [])
 
@@ -34,15 +37,17 @@ const Partidos = () => {
                   <th>Mais informações</th>
                 </tr>
               </thead>
-              <tbody>
-                {partidos.map(item => (
-                  <tr key={item.id}>
-                    <td><strong>{item.sigla}</strong></td>
-                    <td>{item.nome}</td>
-                    <td><Link className='btn btn-success ' to={'/partidos/' + item.id} size="small">Veja mais <FaSearchPlus /></Link></td>
-                  </tr>
-                ))}
-              </tbody>
+              {isLoading ? <tbody><ClipLoader color={'#36D7B7'} isLoading={isLoading} size={50} /></tbody> :
+                <tbody>
+                  {partidos.map(item => (
+                    <tr key={item.id}>
+                      <td><strong>{item.sigla}</strong></td>
+                      <td>{item.nome}</td>
+                      <td><Link className='btn btn-success ' to={'/partidos/' + item.id} size="small">Veja mais <FaSearchPlus /></Link></td>
+                    </tr>
+                  ))}
+                </tbody>
+              }
             </Table>
           </Col>
           <Col sm={6}>
@@ -56,10 +61,10 @@ const Partidos = () => {
             </Figure>
             <p className="text-success">
 
-            <strong className="text-primary">Partidos políticos no Brasil</strong>
-            <br></br>
-            <br></br>
-            Os partidos políticos representam um pilar fundamental na construção das sociedades globais. Isso porque desde o início das civilizações, ainda que diferentemente dos modelos atuais, as agremiações políticas já se apresentavam de maneira relevante ao unir grupos para a defesa de interesses comuns. Esse fenômeno pode ser observado mesmo em períodos mais remotos, quando Grécia e Roma, por exemplo, já contavam com grupos de seguidores de uma doutrina ou até mesmo de uma ideia.
+              <strong className="text-primary">Partidos políticos no Brasil</strong>
+              <br></br>
+              <br></br>
+              Os partidos políticos representam um pilar fundamental na construção das sociedades globais. Isso porque desde o início das civilizações, ainda que diferentemente dos modelos atuais, as agremiações políticas já se apresentavam de maneira relevante ao unir grupos para a defesa de interesses comuns. Esse fenômeno pode ser observado mesmo em períodos mais remotos, quando Grécia e Roma, por exemplo, já contavam com grupos de seguidores de uma doutrina ou até mesmo de uma ideia.
 
               A evolução desse modelo fez com que o partido político, como é constituído na atualidade, ganhasse ainda mais espaço e notoriedade, tornando-se um importante instrumento para a organização e o estabelecimento da democracia representativa.
 
@@ -72,7 +77,7 @@ const Partidos = () => {
               A organização das agremiações foi prevista pela Constituição Federal e os critérios para a criação dos partidos foi estabelecido na Lei dos Partidos Políticos, instituída em 1995. De acordo com a legislação, os partidos possuem autonomia para definir sua estrutura interna, organização e funcionamento e sua criação é livre, desde que respeite a soberania nacional, o regime democrático, o pluripartidarismo e os direitos fundamentais.
 
               O Brasil lidera o índice internacional em número de partidos, com o registro de 33 instituições partidárias no Tribunal Superior Eleitoral (TSE).
-              </p>
+            </p>
           </Col>
         </Row>
       </Container>

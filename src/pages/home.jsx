@@ -64,6 +64,7 @@ const Home = () => {
   }
 
   return (
+  
     <div class="news-background">
                           <br></br>
       <h1 className="text-success">
